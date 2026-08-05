@@ -17,35 +17,37 @@ char extFlag(char* arg[]){
 
 int main(int argc, char *argv[]){
     if (argc==1){
-        printf("%s",usg);
+        fputs(usg,stderr);
         return -1;
     }
     if(argc<2 || argc>3){
-        printf("Invalid arguments or Use \" \" to pass a sentance\n");
-        printf("%s",usg);
+        fputs("Invalid arguments or Use \" \" to pass a sentance\n", stderr);
+        fputs(usg,stderr);
         return -1;
     }
     char flag=extFlag(argv);       //store the extracted flag
-    int argSize=strlen(argv[2]);   //calculate the size of the string
+    size_t argSize;
+    if(argc>2) argSize=strlen(argv[2]);   //calculate the size of the string
+    else argSize=strlen(argv[1]);           //calculate the size of the string
 
     //Split outputs based on the flag given
     if(flag=='A'){
         for (int i=0;i<argSize;i++){
             putchar(toupper(argv[2][i]));
         }
-        printf("\n");
+        putchar('\n');
     }
     else if(flag=='s'){
         for (int i=0;i<argSize;i++){
             putchar(tolower(argv[2][i]));
         }
-        printf("\n");
+        putchar('\n');
     }
     else if(flag==' '){
         for (int i=0;i<argSize;i++){
             putchar((argv[1][i]));
         }
-        printf("\n");
+        putchar('\n');
     }
     return 0;
 }
