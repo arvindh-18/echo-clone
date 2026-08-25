@@ -1,4 +1,4 @@
-This is a simpleer version of the popular echo command in unix based systems
+This is a simpler version of the popular echo command in unix based systems
 
 #INSALLATION
 git clone repo-url
